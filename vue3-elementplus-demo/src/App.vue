@@ -80,6 +80,7 @@
 /* 引入 */
 import { ref } from 'vue'
 
+import request from './utils/requests.js'; // 引入request
 
 /* 数据 */
 // 打字机效果
@@ -149,6 +150,22 @@ const tableDataCopy = Object.assign(tableData)  // 浅拷贝
 
 
 /* 方法 */
+// 测试
+
+const getTableData = async (cur = 1) => {
+  let res = await request.get("/list",{
+    pageSize: 10,
+    pageNum: cur
+  })
+  console.log(res.list)
+  tableData.value = res.list
+  // total.value = res.total
+  // curPage.value = res.pageNum
+}
+getTableData()
+ 
+
+
 // 搜索
 const handleQueryName = (val) => {
   console.log("val => ",val)

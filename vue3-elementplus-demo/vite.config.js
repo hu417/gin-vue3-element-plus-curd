@@ -13,7 +13,14 @@ export default defineConfig({
     )
   ],
   server: {
+    host: 'localhost', //本机ip
     port: 8080,  // 设置启动端口
+    open: true,
+    proxy: {
+      '/user': {  //代理别名
+        target: 'http://localhost:8090',   //代理目标值
+      }
+    },
   },
   base: "./"  // 打包相对路径
 })

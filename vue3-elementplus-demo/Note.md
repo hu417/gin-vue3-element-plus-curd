@@ -111,14 +111,7 @@ git add README.md  // 添加文件到暂存区
 git commit -m "first commit"  // 将暂存区的文件提交到本地仓库
 git branch -M main // 选择分支
 git remote add origin git@github.com:it0114/vue3-demol.git // 添加远程仓库
-
 git push -u origin main  // 将本地仓库main分支文件提交到远程仓库origin分支
-
-
-git remote add origin git@github.com;it0114/vue3-demol.git 
-git branch -M main
-git push -u origin main
-
 
 ```
 
@@ -184,6 +177,29 @@ app.mount('#app')
 
 ```
 
+
+- axios封装
+```bash
+$ mkdir -p  src/utils/
+$ touch src/utils/requests.js
+```
+- 查询联调
+```bash
+/* 方法 */
+// 测试
+
+const getTableData = async (cur = 1) => {
+  let res = await request.get("/list",{
+    pageSize: 10,
+    pageNum: cur
+  })
+  console.log(res.list)
+  tableData.value = res.list
+  // total.value = res.total
+  // curPage.value = res.pageNum
+}
+getTableData()
+```
 
 - 打包
 yarn build
