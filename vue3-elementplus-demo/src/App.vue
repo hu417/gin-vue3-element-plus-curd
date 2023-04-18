@@ -228,8 +228,15 @@ const dialogConfim = async () => {
     await getTableData(curPage.value)
 
   } else {
-    const index = tableData.value.findIndex(item => item.id === dialogdata.value.id)
-    tableData.value[index] = dialogdata.value
+    // const index = tableData.value.findIndex(item => item.id === dialogdata.value.id)
+    // tableData.value[index] = dialogdata.value
+
+    // 修改
+    await request.put(`/update/${dialogdata.value.ID}`,{
+      ...dialogdata.value
+    })
+    await getTableData(curPage.value)
+
   }
   
 }
