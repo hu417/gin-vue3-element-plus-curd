@@ -246,8 +246,8 @@ const handleEdit = (row) => {
 
 // 选中删除
 const handledel = () => {
-  multipleSelection.value.forEach(id => {
-    deleteRow({id})
+  multipleSelection.value.forEach(ID => {
+    deleteRow({ID})
   })
   console.log(multipleSelection.value)
 }
@@ -262,15 +262,17 @@ const handledel = () => {
 // const deleteRow = ({row}) => {
 //   console.log(row)  
 // }
-const deleteRow = ({id}) => {
-  console.log("id => ",id)
-  // 1. 通过id获取index索引的值
-  const index = tableData.value.findIndex(item => item.id == id)
-  console.log("index => ",index)
-  // 2、根据索引进行删除
-  tableData.value.splice(index, 1)
-}
+const deleteRow = async ({ID}) => {
+  console.log("id => ",ID)
+  // // 1. 通过id获取index索引的值
+  // const index = tableData.value.findIndex(item => item.id == ID)
+  // console.log("index => ",index)
+  // // 2、根据索引进行删除
+  // tableData.value.splice(index, 1)
 
+  await request.delete(`/delete/${ID}`)
+  await getTableData(curPage.value)
+}
 
 
 // 多选
@@ -280,7 +282,7 @@ const handleSelectionChange = (val) => {
 
   multipleSelection.value = []
   val.forEach(item => {
-    multipleSelection.value.push(item.id)
+    multipleSelection.value.push(item.ID)
   });
   console.log(multipleSelection.value)
 }
