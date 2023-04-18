@@ -183,7 +183,7 @@ getTableData(1)
  
 // 分页
 const handleChangePage = (val) => {
-  getTableData(val)
+  getTableData(curPage.value)
 }
 
 
@@ -209,16 +209,24 @@ const handleadd = () => {
 }
 
 // 新增-弹窗-确认
-const dialogConfim = () => {
+const dialogConfim = async () => {
   dialogFormVisible.value = false; // 关闭弹窗
 
   // 判断tatle
   if (dialogFormTitle.value === "add") {
-    tableData.value.push({
-      id: (tableData.length + 1).toString(),
+    // 添加数据
+    // tableData.value.push({
+    //   id: (tableData.length + 1).toString(),
+    //   ...dialogdata.value
+    // })
+
+    // 添加数据到数据库
+    await request.post("/add",{
       ...dialogdata.value
     })
-    console.log(tableData.value)
+    // 刷新页面
+    await getTableData(curPage.value)
+
   } else {
     const index = tableData.value.findIndex(item => item.id === dialogdata.value.id)
     tableData.value[index] = dialogdata.value
