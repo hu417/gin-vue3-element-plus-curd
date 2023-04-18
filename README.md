@@ -1,8 +1,11 @@
 ## 项目参考
 
 前端 : Vue3.2 + Vite + Element-Plus 实现最基础的 CRUD https://www.bilibili.com/video/BV1yV4y177jC/
+
 后端 : GO + Gin + GORM + MySql 实现最基础的 CRUD https://www.bilibili.com/video/BV1VV4y1E7Ks/
+
 数据联调 : Vue3.2 + Go + Axios 数据联调 https://www.bilibili.com/video/BV1WF411N7i4/
+
 
 ## git 操作
 
