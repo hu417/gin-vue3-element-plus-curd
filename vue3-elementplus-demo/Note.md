@@ -106,12 +106,12 @@ $ yarn dev
 - 上传github
 ```bash
 echo"# vue3-demo1" >> README.md
-git init   // 初始化本地仓库
-git add README.md  // 添加文件到暂存区
+git init                  // 初始化本地仓库
+git add README.md         // 添加文件到暂存区
 git commit -m "first commit"  // 将暂存区的文件提交到本地仓库
-git branch -M main // 选择分支
+git branch -M main        // 选择分支
 git remote add origin git@github.com:it0114/vue3-demol.git // 添加远程仓库
-git push -u origin main  // 将本地仓库main分支文件提交到远程仓库origin分支
+git push -u origin main   // 将本地仓库main分支文件提交到远程仓库origin分支
 
 ```
 
@@ -200,6 +200,11 @@ const getTableData = async (cur = 1) => {
 }
 getTableData()
 ```
+
+- 分页实现
+1. 添加分页组件
+2. 进行数据绑定
+
 
 - 打包
 yarn build

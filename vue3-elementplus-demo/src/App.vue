@@ -42,6 +42,16 @@
           </template>
         </el-table-column>
       </el-table>
+      <div class="pagination">
+        <el-pagination 
+          background 
+          layout="prev, pager, next" 
+          :total="total" 
+          v-model:current-page="curPage"
+          @current-change="handleChangePage"
+        />
+      </div>
+      
 
       <!-- 弹窗 -->
       <el-dialog v-model="dialogFormVisible" :title="dialogFormTitle === 'add' ? '新增':'编辑'">
@@ -149,21 +159,32 @@ const tableData = ref([
 const tableDataCopy = Object.assign(tableData)  // 浅拷贝
 
 
+// 分页: 页数, 当前页数
+let total = ref(10)
+let curPage = ref(1)
+
+
 /* 方法 */
-// 测试
+// 全量搜索
 
 const getTableData = async (cur = 1) => {
   let res = await request.get("/list",{
     pageSize: 10,
     pageNum: cur
   })
-  console.log(res.list)
+  console.log(res)
   tableData.value = res.list
-  // total.value = res.total
-  // curPage.value = res.pageNum
+  
+  total.value = res.total
+  curPage.value = res.pageNum
+  console.log(curPage)
 }
-getTableData()
+getTableData(1)
  
+// 分页
+const handleChangePage = (val) => {
+  getTableData(val)
+}
 
 
 // 搜索
@@ -286,5 +307,10 @@ h2 {
 
 .btn-list {
   display: flex;
+}
+
+.pagination {
+  margin: 20px 25%;
+  
 }
 </style>
