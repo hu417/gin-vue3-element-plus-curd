@@ -2,7 +2,7 @@
 - [x] 前端 : Vue3.2 + Vite + Element-Plus 实现最基础的 CRUD https://www.bilibili.com/video/BV1yV4y177jC/
 - [x] 后端 : GO + Gin + GORM + MySql 实现最基础的 CRUD https://www.bilibili.com/video/BV1VV4y1E7Ks/
 - [x] 数据联调 : Vue3.2 + Go + Axios 数据联调 https://www.bilibili.com/video/BV1WF411N7i4/
-- [x] github: https://github.com/yanmiao99/vue3-go-crud-project
+- [x] github地址 : https://github.com/yanmiao99/vue3-go-crud-project
 
 
 ## git 操作
