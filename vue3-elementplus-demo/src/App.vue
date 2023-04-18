@@ -188,14 +188,22 @@ const handleChangePage = (val) => {
 
 
 // 搜索
-const handleQueryName = (val) => {
+const handleQueryName = async (val) => {
   console.log("val => ",val)
 
   // console.log(val)
+  // if (val.length > 0) {
+  //   tableData.value = tableData.value.filter(item => (item.name).toLowerCase().match(val.toLowerCase()))
+  // } else {
+  //   tableData.value = tableDataCopy.value
+  // }
+
+  // 搜索
   if (val.length > 0) {
-    tableData.value = tableData.value.filter(item => (item.name).toLowerCase().match(val.toLowerCase()))
-  } else {
-    tableData.value = tableDataCopy.value
+    tableDataCopy.value = await request.get(`/list/${val}`)
+
+  } else { 
+    await getTableData(curPage.value)
   }
 
 }
